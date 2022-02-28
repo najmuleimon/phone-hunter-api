@@ -1,6 +1,11 @@
 // error message
 const errorMsg = document.getElementById('error-msg')
 
+// loader
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
+
 // search phones
 const searchPhone = () => {
     const searchField = document.getElementById('search-phone')
@@ -9,6 +14,8 @@ const searchPhone = () => {
 
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+
+    toggleSpinner('block');
 
     if(searchText === ''){
         errorMsg.innerText = 'Please write phone names to search'
@@ -26,34 +33,32 @@ const displayPhones = phones => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
 
+    toggleSpinner('block');
+    
     if(phones.length === 0){
+        toggleSpinner('none');
         errorMsg.innerText = 'No phone found'
     }
     else{
         let firstTwenty = phones.slice(0, 20)
-        errorMsg.innerText = `show ${firstTwenty.length} results of total ${phones.length} products of your search`
+        errorMsg.innerText = `Showing ${firstTwenty.length} results of total ${phones.length} products of your search`
 
         firstTwenty.forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-6">
-                        <img src="${phone.image}" class="img-fluid rounded-start" alt="">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h5 class="card-title">${phone.phone_name}</h5>
-                            <h3>${phone.brand}</h3>
-                            <button onclick="showDetails('${phone.slug}')" data-bs-toggle="modal" data-bs-target="#staticBackdrop">show details</button>
-                        </div>
-                    </div>
+            <div class="card text-center">
+                <img src="${phone.image}" alt="" class="mx-auto">
+                <div class="card-body">
+                    <h5 class="card-title">${phone.phone_name}</h5>
+                    <h3>${phone.brand}</h3>
+                    <button onclick="showDetails('${phone.slug}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">show details</button>
                 </div>
             </div>
             `;
             searchResult.appendChild(div);
         })
+        toggleSpinner('none');
     }
     
 }
