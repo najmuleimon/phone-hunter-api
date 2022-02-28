@@ -4,7 +4,7 @@ const errorMsg = document.getElementById('error-msg')
 // search phones
 const searchPhone = () => {
     const searchField = document.getElementById('search-phone')
-    const searchText = searchField.value
+    const searchText = searchField.value.toLowerCase()
     searchField.value = ''
 
     const searchResult = document.getElementById('search-result');
@@ -70,7 +70,9 @@ const showDetails = id => {
 // display phone details in modals
 const displayDetails = detail => {
     const phoneDetails = document.getElementById('phone-details')
-    phoneDetails.innerHTML = `
+    phoneDetails.textContent = ''
+    const div = document.createElement('div')
+    div.innerHTML = `
         <img src="${detail.image}" alt="">
         <h3>${detail.name}</h3>
         <h5>${detail.releaseDate ? detail.releaseDate : 'Release date not found'}</h5>
@@ -89,12 +91,13 @@ const displayDetails = detail => {
         </ul>
         <p>Others</p>
         <ul>
-            <li>${detail.others.WLAN}</li>
-            <li>${detail.others.Bluetooth}</li>
-            <li>${detail.others.GPS}</li>
-            <li>${detail.others.NFC}</li>
-            <li>${detail.others.Radio}</li>
-            <li>${detail.others.USB}</li>
+            <li>${detail.others?.WLAN ? detail.others.WLAN : ''}</li>
+            <li>${detail.others?.Bluetooth ? detail.others.Bluetooth : ''}</li>
+            <li>${detail.others?.GPS ? detail.others.GPS : ''}</li>
+            <li>${detail.others?.NFC ? detail.others.NFC : ''}</li>
+            <li>${detail.others?.Radio ? detail.others.Radio : ''}</li>
+            <li>${detail.others?.USB ? detail.others.USB : ''}</li>
         </ul>
     `
+    phoneDetails.appendChild(div)
 }
