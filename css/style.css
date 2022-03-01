@@ -40,6 +40,60 @@ ul li {
     display: none;
 }
 
+/*-----------------------------------------
+banner css
+-------------------------------------------*/
+.banner {
+    background: url(../images/banner.jpg);
+    background-color: rgba(0, 0, 0, 0.568);
+    background-blend-mode: overlay;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner .all {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.banner h1 {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.banner p {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+.banner .btn {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+#error-msg {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+}
+
+/*-----------------------------------------
+products css
+-------------------------------------------*/
+.products {
+    padding-top: 50px;
+}
+
+
+/*-----------------------------------------
+Card css
+-------------------------------------------*/
 .card {
     padding: 30px 20px;
 }
@@ -63,6 +117,11 @@ ul li {
     text-transform: capitalize;
 }
 
+
+
+/*-----------------------------------------
+modal css
+-------------------------------------------*/
 .modal-dialog {
     max-width: 900px;
 }
@@ -75,18 +134,18 @@ ul li {
     font-size: 30px;
     font-weight: 600;
     text-transform: capitalize;
-    color: #361500;
+    color: #0d6efd;
 }
 
 .modal-body h5 {
     font-size: 20px;
     font-weight: 500;
-    color: #361500;
+    color: #222;
     padding: 5px 0;
 }
 
 .modal-body p {
-    color: #1C0A00;
+    color: #222;
     font-size: 14px;
     font-weight: 400;
 }
@@ -108,9 +167,7 @@ ul li {
     padding-bottom: 5px;
 }
 
-#error-msg {
-    padding-bottom: 20px;
-}
+
 
 .modal-body .sensors {
     display: flex;
@@ -121,6 +178,9 @@ ul li {
     font-size: 16px;
 }
 
+/*-----------------------------------------
+responsive css
+-------------------------------------------*/
 @media (min-width: 768px) and (max-width: 991px) {
     .modal-dialog {
         max-width: 700px;
